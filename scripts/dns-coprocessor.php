@@ -7,7 +7,7 @@ if($helo != "HELO\t3\n"){
 }
 
 echo "OK\t";
-echo "PHPBackend Firing Up\n";
+echo "PHP-DNS-Backend Ready\n";
 
 
 while($f = fgets(STDIN)){
@@ -26,8 +26,7 @@ while($f = fgets(STDIN)){
 
 		$zone_file = "/etc/powerdns/php-zones/$qname.php";
 
-		file_put_contents("/tmp/dns_php1_$qname.$qtype", "Qtype $qtype");
-		if(file_exists($zone_file)){
+		if(file_exists($zone_file) && preg_match('/^[a-zA-Z0-9\-\.]+\.[a-zA-Z0-9]+$/', $qname)){
 				// location info needs to be available before we include the zone data
 				$location_info = geoip_record_by_name($remote_addr);
 
@@ -50,7 +49,6 @@ while($f = fgets(STDIN)){
 										$zone_out .= $record['content']."\n";
 				
 										echo $zone_out;
-										file_put_contents("/tmp/dns_php2_$qname.$qtype", "Ranthis: ".$zone_out);
 								} // foreach 
 						} // foreach
 				}else if(count($zonedata[$qtype]) > 0){ 
@@ -67,7 +65,6 @@ while($f = fgets(STDIN)){
 								$zone_out .= $record['content']."\n";
 
 								echo $zone_out;
-								file_put_contents("/tmp/dns_php2_$qname.$qtype", "Ranthis: ".$zone_out);
 						} // foreach
 				} // else
 		}
