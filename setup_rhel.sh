@@ -6,7 +6,7 @@ if ! grep -q -i "release 7" /etc/redhat-release; then
 fi
 
 rpm -i http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-yum install pdns-backend-geo pdns-backend-pipe vim php httpd mariadb mod_php php-pecl-geoip bind-utils -y
+yum install pdns-backend-geo pdns-backend-pipe vim php php-pecl-geoip bind-utils -y
 
 
 wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
