@@ -24,7 +24,9 @@ while($f = fgets(STDIN)){
 		$bits = 21;
 		$auth = 1;
 
-		$zone_file = "/etc/powerdns/php-zones/$qname.php";
+		// $zone_file = "/etc/pdns/php-zones/$qname.php";
+		// Changed to the following for cross-platform compatibility
+		$zone_file = dirname(__FILE__)."/php-zones/$qname.php";
 
 		if(file_exists($zone_file) && preg_match('/^[a-zA-Z0-9\-\.]+\.[a-zA-Z0-9]+$/', $qname)){
 				// location info needs to be available before we include the zone data
