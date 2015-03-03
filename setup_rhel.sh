@@ -5,6 +5,13 @@ if ! grep -q -i "release 7" /etc/redhat-release; then
   exit
 fi
 
+read -p "This has only been tested on RHEL 7 and CentOS 7, if you want to continue type in YES (all uppercased): " CONTINUE
+if [ "$CONTINUE" != "YES" ]; then
+	echo Not going to run setup since you did not type in YES.
+	exit
+fi
+
+
 rpm -i http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 yum install pdns-backend-geo pdns-backend-pipe vim php php-pecl-geoip bind-utils -y
 
