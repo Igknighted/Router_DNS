@@ -49,3 +49,5 @@ chmod +x dns-coprocessor.php
 cd /etc/powerdns/php-zones/
 wget https://raw.githubusercontent.com/Igknighted/Router_DNS/master/scripts/example.com.php
 wget https://raw.githubusercontent.com/Igknighted/Router_DNS/master/scripts/txt1.example.com.php
+
+service pdns restart
