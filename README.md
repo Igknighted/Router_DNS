@@ -9,10 +9,10 @@ The main use case scenario for this would be a CDN. If your target Audiences are
 You can also use the longitude and latitude information to figure out which datacenter is closest for your end user and send them on their way according to that.  
 
 #### Requirements
-This script was specifically written on/for Ubuntu 14.04LTS. However you might be able to get away with using it on 12.04LTS and newer versions of Ubuntu. However... I promise NOTHING.
+This script was specifically written on/for Ubuntu 14.04LTS and CentOS/RHEL 7. However you might be able to get away with using it on 12.04LTS and newer versions of Ubuntu and it definitely will not work on older versions of CentOS/RHEL. However... I promise NOTHING.
 
 #### Quick Setup
-Just run this command on your server.
+Just run this command on your server. It will detect if you're running Ubuntu or CentOS and run the appropriate install script.
 ```
 wget https://raw.githubusercontent.com/Igknighted/Router_DNS/master/setup.sh && bash setup.sh
 ```
@@ -24,3 +24,5 @@ There is an example configuration for example.com in these files:
 ```
 
 Hostnames are housed in their own files in `/etc/powerdns/php-zones/`. The file `example.com.php` holds the records for any queries against `example.com`. The file `txt1.example.com.php` holds records for `txt1.example.com`.
+
+Note: After the install, you may want to delete the setup scripts. You can just lazily run `rm -rf setup.sh setup_rhel.sh setup_ubuntu.sh`
